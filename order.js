@@ -211,20 +211,20 @@
       const trackingNumber = orderId;
 
       // Prepare WhatsApp message
-      let orderDetails = `🛍️ *New Order from Gadget Hub*\n\n`;
+      let orderDetails = `*New Order from Gadget Hub*\n\n`;
       orderDetails += `*Customer Details:*\n`;
-      orderDetails += `👤 Name: ${name}\n`;
-      orderDetails += `📧 Email: ${email}\n`;
-      orderDetails += `📞 Phone: ${phone}\n`;
-      orderDetails += `📍 Address: ${address}\n\n`;
+      orderDetails += `Name: ${name}\n`;
+      orderDetails += `Email: ${email}\n`;
+      orderDetails += `Phone: ${phone}\n`;
+      orderDetails += `Address: ${address}\n\n`;
       orderDetails += `*Order Items:*\n`;
       cart.forEach(item => {
         orderDetails += `• ${item.name} x ${item.quantity} = Rs. ${(item.price * item.quantity).toLocaleString()}\n`;
       });
-      orderDetails += `\n💰 *Total: Rs. ${total.toLocaleString()}*`;
-      orderDetails += `\n💳 Payment: ${paymentMethod === 'cod' ? 'Cash on Delivery' : 'Card'}`;
-      orderDetails += `\n🆔 Order ID: ${orderId}`;
-      orderDetails += `\n📅 Date: ${new Date().toLocaleString()}`;
+      orderDetails += `\n*Total: Rs. ${total.toLocaleString()}*`;
+      orderDetails += `\nPayment: ${paymentMethod === 'cod' ? 'Cash on Delivery' : 'Card'}`;
+      orderDetails += `\nOrder ID: ${orderId}`;
+      orderDetails += `\nDate: ${new Date().toLocaleString()}`;
 
       const encodedMessage = encodeURIComponent(orderDetails);
       const whatsappUrl = `https://wa.me/${OWNER_PHONE}?text=${encodedMessage}`;
@@ -298,4 +298,5 @@
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
     setTimeout(init, 1);
   }
+
 })();

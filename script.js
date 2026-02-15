@@ -580,7 +580,7 @@ function renderAbout() {
       <div class="container about-container">
         <div class="about-text">
           <h2>About <span class="gradient-text">Us</span></h2>
-          <p>"We are a passionate team dedicated to bringing you the best products at unbeatable prices. From electronics to fashion, we ensure quality and customer satisfaction."</p>
+          <p>We are a passionate team dedicated to bringing you the best products at unbeatable prices. From electronics to fashion, we ensure quality and customer satisfaction...</p>
           <p><strong>Founded:</strong> 2023</p>
           <p><strong>Owner:</strong> Kabeer Soomro</p>
           <p><strong>Location:</strong> Karachi, Pakistan</p>
@@ -846,5 +846,6 @@ window.addEventListener("load", () => {
   navigateTo(window.location.hash || "#/");
   updateCart();
 });
+
 
 window.addEventListener("hashchange", () => navigateTo(window.location.hash));

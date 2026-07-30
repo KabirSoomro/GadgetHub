@@ -396,10 +396,27 @@ if (contactForm) {
     
     // const whatsappMsg = `Message from ${name} (${email}):%0A${message}`;
     // window.open(`https://wa.me/923168465697?text=${whatsappMsg}`, "_blank");
+    // Function to create HTML for extra dynamic fields
+    const createExtraFieldHTML = (label, value) => {
+        if (!value) return "";
+        return `
+        <tr>
+          <td class="info-card" style="padding: 16px 20px; border-bottom: 1px solid #e2e8f0; border-left: 4px solid transparent;">
+            <span style="color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">${label}</span><br>
+            <span style="color: #0f172a; font-size: 16px; font-weight: 500; display: inline-block; margin-top: 4px;">${value}</span>
+          </td>
+        </tr>`;
+    };
+
+    let myExtraFields = "";
+    // Aap future me GadgetHub pe naye input daalen to yahan aise add karen:
+    // myExtraFields += createExtraFieldHTML("Phone Number", phone);
+
     emailjs.send("service_dek76kw", "template_rr1ng4i", {
       from_name: name,
       from_email: email,
       reply_to: email,
+      extra_details: myExtraFields,
       message: message,
       to_email: 'gkabeersoomro@gmail.com',
       website_name: "GadgetHub"
@@ -682,10 +699,27 @@ function renderContact() {
     
     // const whatsappMsg = `Message from ${name} (${email}):%0A${message}`;
     // window.open(`https://wa.me/923168465697?text=${whatsappMsg}`, "_blank");
+    // Function to create HTML for extra dynamic fields
+    const createExtraFieldHTML = (label, value) => {
+        if (!value) return "";
+        return `
+        <tr>
+          <td class="info-card" style="padding: 16px 20px; border-bottom: 1px solid #e2e8f0; border-left: 4px solid transparent;">
+            <span style="color: #94a3b8; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">${label}</span><br>
+            <span style="color: #0f172a; font-size: 16px; font-weight: 500; display: inline-block; margin-top: 4px;">${value}</span>
+          </td>
+        </tr>`;
+    };
+
+    let myExtraFields = "";
+    // Aap future me GadgetHub pe naye input daalen to yahan aise add karen:
+    // myExtraFields += createExtraFieldHTML("Phone Number", phone);
+
     emailjs.send("service_dek76kw", "template_rr1ng4i", {
       from_name: name,
       from_email: email,
       reply_to: email,
+      extra_details: myExtraFields,
       message: message,
       to_email: 'gkabeersoomro@gmail.com',
       website_name: "GadgetHub"

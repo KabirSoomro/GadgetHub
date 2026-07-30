@@ -396,10 +396,10 @@ if (contactForm) {
     
     // const whatsappMsg = `Message from ${name} (${email}):%0A${message}`;
     // window.open(`https://wa.me/923168465697?text=${whatsappMsg}`, "_blank");
-    
     emailjs.send("service_dek76kw", "template_rr1ng4i", {
       from_name: name,
       reply_to: email,
+      sender_email: email,
       message: message,
       website_name: "GadgetHub"
     })
@@ -681,10 +681,10 @@ function renderContact() {
     
     // const whatsappMsg = `Message from ${name} (${email}):%0A${message}`;
     // window.open(`https://wa.me/923168465697?text=${whatsappMsg}`, "_blank");
-
     emailjs.send("service_dek76kw", "template_rr1ng4i", {
       from_name: name,
       reply_to: email,
+      sender_email: email,
       message: message,
       website_name: "GadgetHub"
     })

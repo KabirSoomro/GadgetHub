@@ -400,7 +400,8 @@ if (contactForm) {
     emailjs.send("service_dek76kw", "template_rr1ng4i", {
       from_name: name,
       reply_to: email,
-      message: message
+      message: message,
+      website_name: "GadgetHub"
     })
     .then(() => {
       Swal.fire({ icon: 'success', title: 'Success!', text: 'Your message has been sent successfully.', confirmButtonColor: '#3085d6' });
@@ -684,7 +685,8 @@ function renderContact() {
     emailjs.send("service_dek76kw", "template_rr1ng4i", {
       from_name: name,
       reply_to: email,
-      message: message
+      message: message,
+      website_name: "GadgetHub"
     })
     .then(() => {
       Swal.fire({

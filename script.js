@@ -386,11 +386,33 @@ checkoutForm.addEventListener("submit", (e) => {
 if (contactForm) {
   contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+    
     const name = contactForm.querySelector('input[placeholder="Your Name"]').value;
     const email = contactForm.querySelector('input[placeholder="Your Email"]').value;
     const message = contactForm.querySelector('textarea').value;
-    const whatsappMsg = `Message from ${name} (${email}):%0A${message}`;
-    window.open(`https://wa.me/923168465697?text=${whatsappMsg}`, "_blank");
+    
+    // const whatsappMsg = `Message from ${name} (${email}):%0A${message}`;
+    // window.open(`https://wa.me/923168465697?text=${whatsappMsg}`, "_blank");
+    
+    emailjs.send("service_dek76kw", "template_rr1ng4i", {
+      from_name: name,
+      reply_to: email,
+      message: message
+    })
+    .then(() => {
+      Swal.fire({ icon: 'success', title: 'Success!', text: 'Your message has been sent successfully.', confirmButtonColor: '#3085d6' });
+      e.target.reset();
+    })
+    .catch((error) => {
+      console.error('EmailJS Error:', error);
+      Swal.fire({ icon: 'error', title: 'Oops...', text: 'Something went wrong! Please try again later.', confirmButtonColor: '#d33' });
+    })
+    .finally(() => {
+      submitBtn.innerHTML = originalText;
+    });
   });
 }
 
@@ -580,7 +602,7 @@ function renderAbout() {
       <div class="container about-container">
         <div class="about-text">
           <h2>About <span class="gradient-text">Us</span></h2>
-          <p>We are a passionate team dedicated to bringing you the best products at unbeatable prices. From electronics to fashion, we ensure quality and customer satisfaction...</p>
+          <p>"We are a passionate team dedicated to bringing you the best products at unbeatable prices. From electronics to fashion, we ensure quality and customer satisfaction."</p>
           <p><strong>Founded:</strong> 2023</p>
           <p><strong>Owner:</strong> Kabeer Soomro</p>
           <p><strong>Location:</strong> Karachi, Pakistan</p>
@@ -647,11 +669,44 @@ function renderContact() {
   // Rebind contact form
   document.getElementById("contactForm").addEventListener("submit", (e) => {
     e.preventDefault();
+    
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+    
     const name = document.querySelector('input[name="name"]').value;
     const email = document.querySelector('input[name="email"]').value;
     const message = document.querySelector('textarea[name="message"]').value;
-    const whatsappMsg = `Message from ${name} (${email}):%0A${message}`;
-    window.open(`https://wa.me/923168465697?text=${whatsappMsg}`, "_blank");
+    
+    // const whatsappMsg = `Message from ${name} (${email}):%0A${message}`;
+    // window.open(`https://wa.me/923168465697?text=${whatsappMsg}`, "_blank");
+
+    emailjs.send("service_dek76kw", "template_rr1ng4i", {
+      from_name: name,
+      reply_to: email,
+      message: message
+    })
+    .then(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Your message has been sent successfully.',
+        confirmButtonColor: '#3085d6'
+      });
+      e.target.reset();
+    })
+    .catch((error) => {
+      console.error('EmailJS Error:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! Please try again later.',
+        confirmButtonColor: '#d33'
+      });
+    })
+    .finally(() => {
+      submitBtn.innerHTML = originalText;
+    });
   });
 }
 
@@ -847,5 +902,24 @@ window.addEventListener("load", () => {
   updateCart();
 });
 
-
 window.addEventListener("hashchange", () => navigateTo(window.location.hash));
+
+
+// ==================== AUTO SCROLL ON PAGE LOAD ====================
+window.addEventListener('load', function() {
+  window.scrollTo(0, 0);
+});
+
+// Har navigation par top par scroll
+document.querySelectorAll('[data-link]').forEach(link => {
+  link.addEventListener('click', function() {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 50);
+  });
+});
+
+
+// ==================== AUTO SCROLL ON PAGE LOAD ====================
+window.addEventListener('load', () => window.scrollTo(0, 0));
+window.addEventListener('hashchange', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

@@ -398,9 +398,10 @@ if (contactForm) {
     // window.open(`https://wa.me/923168465697?text=${whatsappMsg}`, "_blank");
     emailjs.send("service_dek76kw", "template_rr1ng4i", {
       from_name: name,
+      from_email: email,
       reply_to: email,
-      sender_email: email,
       message: message,
+      to_email: 'gkabeersoomro@gmail.com',
       website_name: "GadgetHub"
     })
     .then(() => {
@@ -683,9 +684,10 @@ function renderContact() {
     // window.open(`https://wa.me/923168465697?text=${whatsappMsg}`, "_blank");
     emailjs.send("service_dek76kw", "template_rr1ng4i", {
       from_name: name,
+      from_email: email,
       reply_to: email,
-      sender_email: email,
       message: message,
+      to_email: 'gkabeersoomro@gmail.com',
       website_name: "GadgetHub"
     })
     .then(() => {
